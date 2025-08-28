@@ -45,19 +45,16 @@ android {
             dimension = "app"
             applicationId = "com.example.grocery_go.dev"
             resValue("string", "app_name", "Grocery Go Dev")
-            applicationIdSuffix = ".staging"
         }
         create("staging") {
             dimension = "default"
             applicationId = "com.example.grocery_go.staging"
-             resValue("string", "app_name", "Grocery Go Staging")
-            applicationIdSuffix = ".staging"
+            resValue("string", "app_name", "Grocery Go Staging")
         }
         create("prod") {
             dimension = "default"
             applicationId = "com.example.grocery_go"
-             resValue("string", "app_name", "Grocery Go")
-            applicationIdSuffix = ".production"
+            resValue("string", "app_name", "Grocery Go")
         }
     }
 }

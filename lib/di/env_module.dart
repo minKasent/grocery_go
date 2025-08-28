@@ -16,13 +16,15 @@ abstract class AppModule {
 
   @staging
   @Singleton()
-  AppConfig stagingConfig() =>
-      AppConfig(flavor: Flavor.dev, baseUrl: 'https://dummyjson_staging.com');
+  AppConfig stagingConfig() => AppConfig(
+    flavor: Flavor.staging,
+    baseUrl: 'https://dummyjson_staging.com',
+  );
 
   @prod
   @Singleton()
   AppConfig prodConfig() =>
-      AppConfig(flavor: Flavor.dev, baseUrl: 'https://dummyjson_prod.com');
+      AppConfig(flavor: Flavor.prod, baseUrl: 'https://dummyjson_prod.com');
 
   /// baseUrl for each environment with @Named to inject into Dio/Retrofit
   @dev
