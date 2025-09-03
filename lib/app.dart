@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:grocery_go/presentation/screen/splash_screen.dart';
+import 'package:grocery_go/presentation/screens/number_screen/number_screen.dart';
+import 'package:grocery_go/presentation/screens/sing_in_screen/sing_in_screen.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: SplashScreen(),
+      home: NumberScreen(),
     );
   }
 }

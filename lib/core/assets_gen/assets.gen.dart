@@ -39,12 +39,38 @@ class $AssetsFontsGen {
   ];
 }
 
+class $AssetsIconsGen {
+  const $AssetsIconsGen();
+
+  /// File path: assets/icons/facebook_ic.png
+  AssetGenImage get facebookIc =>
+      const AssetGenImage('assets/icons/facebook_ic.png');
+
+  /// File path: assets/icons/google_ic.png
+  AssetGenImage get googleIc =>
+      const AssetGenImage('assets/icons/google_ic.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [facebookIc, googleIc];
+}
+
 class $AssetsImagesGen {
   const $AssetsImagesGen();
+
+  /// File path: assets/images/background_gradient.png
+  AssetGenImage get backgroundGradient =>
+      const AssetGenImage('assets/images/background_gradient.png');
 
   /// File path: assets/images/background_onboarding_img.png
   AssetGenImage get backgroundOnboardingImg =>
       const AssetGenImage('assets/images/background_onboarding_img.png');
+
+  /// File path: assets/images/background_singin.png
+  AssetGenImage get backgroundSingin =>
+      const AssetGenImage('assets/images/background_singin.png');
+
+  /// File path: assets/images/flag.png
+  AssetGenImage get flag => const AssetGenImage('assets/images/flag.png');
 
   /// File path: assets/images/logo_img.png
   AssetGenImage get logoImg =>
@@ -56,7 +82,10 @@ class $AssetsImagesGen {
 
   /// List of all assets
   List<AssetGenImage> get values => [
+    backgroundGradient,
     backgroundOnboardingImg,
+    backgroundSingin,
+    flag,
     logoImg,
     splashScreenImg,
   ];
@@ -66,6 +95,7 @@ class Assets {
   const Assets._();
 
   static const $AssetsFontsGen fonts = $AssetsFontsGen();
+  static const $AssetsIconsGen icons = $AssetsIconsGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
 }
 
