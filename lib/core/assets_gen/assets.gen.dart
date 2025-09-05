@@ -42,20 +42,53 @@ class $AssetsFontsGen {
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/cart_ic.png
+  AssetGenImage get cartIc => const AssetGenImage('assets/icons/cart_ic.png');
+
+  /// File path: assets/icons/explore_ic.png
+  AssetGenImage get exploreIc =>
+      const AssetGenImage('assets/icons/explore_ic.png');
+
   /// File path: assets/icons/facebook_ic.png
   AssetGenImage get facebookIc =>
       const AssetGenImage('assets/icons/facebook_ic.png');
+
+  /// File path: assets/icons/favorite_ic.png
+  AssetGenImage get favoriteIc =>
+      const AssetGenImage('assets/icons/favorite_ic.png');
 
   /// File path: assets/icons/google_ic.png
   AssetGenImage get googleIc =>
       const AssetGenImage('assets/icons/google_ic.png');
 
+  /// File path: assets/icons/store_ic.png
+  AssetGenImage get storeIc => const AssetGenImage('assets/icons/store_ic.png');
+
+  /// File path: assets/icons/user_info_ic.png
+  AssetGenImage get userInfoIc =>
+      const AssetGenImage('assets/icons/user_info_ic.png');
+
   /// List of all assets
-  List<AssetGenImage> get values => [facebookIc, googleIc];
+  List<AssetGenImage> get values => [
+    cartIc,
+    exploreIc,
+    facebookIc,
+    favoriteIc,
+    googleIc,
+    storeIc,
+    userInfoIc,
+  ];
 }
 
 class $AssetsImagesGen {
   const $AssetsImagesGen();
+
+  /// File path: assets/images/Coke.png
+  AssetGenImage get coke => const AssetGenImage('assets/images/Coke.png');
+
+  /// File path: assets/images/apple_juice.png
+  AssetGenImage get appleJuice =>
+      const AssetGenImage('assets/images/apple_juice.png');
 
   /// File path: assets/images/background_gradient.png
   AssetGenImage get backgroundGradient =>
@@ -69,6 +102,10 @@ class $AssetsImagesGen {
   AssetGenImage get backgroundSingin =>
       const AssetGenImage('assets/images/background_singin.png');
 
+  /// File path: assets/images/cocacola.png
+  AssetGenImage get cocacola =>
+      const AssetGenImage('assets/images/cocacola.png');
+
   /// File path: assets/images/flag.png
   AssetGenImage get flag => const AssetGenImage('assets/images/flag.png');
 
@@ -76,18 +113,29 @@ class $AssetsImagesGen {
   AssetGenImage get logoImg =>
       const AssetGenImage('assets/images/logo_img.png');
 
+  /// File path: assets/images/pepsi.png
+  AssetGenImage get pepsi => const AssetGenImage('assets/images/pepsi.png');
+
   /// File path: assets/images/splash_screen_img.png
   AssetGenImage get splashScreenImg =>
       const AssetGenImage('assets/images/splash_screen_img.png');
 
+  /// File path: assets/images/sprite.png
+  AssetGenImage get sprite => const AssetGenImage('assets/images/sprite.png');
+
   /// List of all assets
   List<AssetGenImage> get values => [
+    coke,
+    appleJuice,
     backgroundGradient,
     backgroundOnboardingImg,
     backgroundSingin,
+    cocacola,
     flag,
     logoImg,
+    pepsi,
     splashScreenImg,
+    sprite,
   ];
 }
 

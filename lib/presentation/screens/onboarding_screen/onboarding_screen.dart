@@ -36,7 +36,7 @@ class OnboardingScreen extends StatelessWidget {
                   style: AppTypography.text16w400,
                 ),
                 const SizedBox(height: 25,),
-                AppButton(),
+                AppButton(title: "Get Started",),
               ],
             ),
           ),

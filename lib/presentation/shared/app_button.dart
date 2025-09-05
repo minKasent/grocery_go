@@ -5,7 +5,8 @@ import 'package:grocery_go/presentation/theme/app_typography.dart';
 import 'app_text.dart';
 
 class AppButton extends StatelessWidget {
-  const AppButton({super.key});
+  final String title;
+  const AppButton({super.key, required this.title});
 
   @override
   Container build(BuildContext context) {
@@ -17,7 +18,7 @@ class AppButton extends StatelessWidget {
         color: AppColorSchemes.green,
         borderRadius: BorderRadius.circular(19),
       ),
-      child: AppText(content: "Get Started",style: AppTypography.text18w600,),
+      child: AppText(content: title,style: AppTypography.text18w600,),
     );
   }
 }
