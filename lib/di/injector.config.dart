@@ -23,6 +23,7 @@ import 'package:grocery_go/data/repositories/auth_repository_impl.dart'
 import 'package:grocery_go/di/env_module.dart' as _i271;
 import 'package:grocery_go/di/third_party_module.dart' as _i823;
 import 'package:grocery_go/domain/repository/auth_repository.dart' as _i67;
+import 'package:grocery_go/domain/usecase/get_user_info_usecase.dart' as _i149;
 import 'package:grocery_go/domain/usecase/login_usecase.dart' as _i878;
 import 'package:injectable/injectable.dart' as _i526;
 import 'package:shared_preferences/shared_preferences.dart' as _i460;
@@ -97,6 +98,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i878.LoginUsecase>(
       () => _i878.LoginUsecase(gh<_i67.IAuthRepository>()),
+    );
+    gh.factory<_i149.GetUserInfoUsecase>(
+      () => _i149.GetUserInfoUsecase(gh<_i67.IAuthRepository>()),
     );
     return this;
   }

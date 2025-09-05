@@ -65,47 +65,6 @@ class FavoriteScreen extends StatelessWidget {
           ),
         ],
       ),
-      bottomNavigationBar: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(30),
-            topRight: Radius.circular(30),
-          ),
-          boxShadow: [
-            BoxShadow(
-              color: Color(0xff555e5817).withValues(alpha: 0.1),
-              blurRadius: 15,
-              offset: Offset(2, -5),
-            ),
-          ],
-        ),
-        child: BottomNavigationBar(
-          selectedItemColor: AppColorSchemes.green,
-          unselectedItemColor: AppColorSchemes.black,
-          items: [
-            BottomNavigationBarItem(
-              icon: Image(image: Assets.icons.storeIc.provider()),
-              label: 'Shop',
-            ),
-            BottomNavigationBarItem(
-              icon: Image(image: Assets.icons.exploreIc.provider()),
-              label: 'Favorite',
-            ),
-            BottomNavigationBarItem(
-              icon: Image(image: Assets.icons.cartIc.provider()),
-              label: 'Cart',
-            ),
-            BottomNavigationBarItem(
-              icon: Image(image: Assets.icons.favoriteIc.provider()),
-              label: 'Profile',
-            ),
-            BottomNavigationBarItem(
-              icon: Image(image: Assets.icons.userInfoIc.provider()),
-              label: 'Settings',
-            ),
-          ],
-        ),
-      ),
     );
   }
 }

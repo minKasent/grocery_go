@@ -14,7 +14,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
   LoginBloc(this._failureMapper) : super(LoginState()) {
     on<OnLoginEvent>(_onLoginEvent);
-    on<OnClearErrorMessage>(_onClearErrorMessage);
+    on<OnClearLoginErrorMessageEvent>(_onClearErrorMessage);
+    on<OnTogglePasswordEvent>(_onTogglePasswordEvent);
   }
 
   Future<void> _onLoginEvent(
@@ -48,9 +49,16 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   }
 
   void _onClearErrorMessage(
-    OnClearErrorMessage event,
+    OnClearLoginErrorMessageEvent event,
     Emitter<LoginState> emit,
   ) {
     emit(state.copyWith(apiErrorMessage: ''));
+  }
+
+  void _onTogglePasswordEvent(
+    OnTogglePasswordEvent event,
+    Emitter<LoginState> emit,
+  ) {
+    emit(state.copyWith(isHidePass: !state.isHidePass));
   }
 }
