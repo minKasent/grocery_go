@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:grocery_go/data/models/requests/login_schema.dart';
 import 'package:grocery_go/data/models/responses/login_dto.dart';
+import 'package:grocery_go/data/models/responses/user_info_dto.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
 
@@ -14,4 +15,10 @@ abstract class ApiService {
 
   @POST('/auth/login')
   Future<LoginDto> login(@Body() LoginSchema loginSchema);
+
+  @GET('/auth/me')
+  Future<UserInfoDto> getUserInfo();
+
+  @GET('/carts/{id}')
+  Future<void> getASingleCart(@Path('id') int cartId);
 }
