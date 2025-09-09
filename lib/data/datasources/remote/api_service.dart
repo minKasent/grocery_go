@@ -19,6 +19,6 @@ abstract class ApiService {
   @GET('/auth/me')
   Future<UserInfoDto> getUserInfo();
 
-  @GET('/carts/{id}')
-  Future<void> getASingleCart(@Path('id') int cartId);
+  // @GET('/carts/{id}')
+  // Future<void> getASingleCart(@Path('id') int cartId);
 }
