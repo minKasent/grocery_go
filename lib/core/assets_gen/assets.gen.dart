@@ -42,8 +42,22 @@ class $AssetsFontsGen {
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/about icon.png
+  AssetGenImage get aboutIcon =>
+      const AssetGenImage('assets/icons/about icon.png');
+
+  /// File path: assets/icons/bell_ic.png
+  AssetGenImage get bellIc => const AssetGenImage('assets/icons/bell_ic.png');
+
   /// File path: assets/icons/cart_ic.png
   AssetGenImage get cartIc => const AssetGenImage('assets/icons/cart_ic.png');
+
+  /// File path: assets/icons/delivery_ic.png
+  AssetGenImage get deliveryIc =>
+      const AssetGenImage('assets/icons/delivery_ic.png');
+
+  /// File path: assets/icons/edit_ic.png
+  AssetGenImage get editIc => const AssetGenImage('assets/icons/edit_ic.png');
 
   /// File path: assets/icons/explore_ic.png
   AssetGenImage get exploreIc =>
@@ -61,6 +75,25 @@ class $AssetsIconsGen {
   AssetGenImage get googleIc =>
       const AssetGenImage('assets/icons/google_ic.png');
 
+  /// File path: assets/icons/help icon.png
+  AssetGenImage get helpIcon =>
+      const AssetGenImage('assets/icons/help icon.png');
+
+  /// File path: assets/icons/my_detail_ic.png
+  AssetGenImage get myDetailIc =>
+      const AssetGenImage('assets/icons/my_detail_ic.png');
+
+  /// File path: assets/icons/order_ic.png
+  AssetGenImage get orderIc => const AssetGenImage('assets/icons/order_ic.png');
+
+  /// File path: assets/icons/payment_ic.png
+  AssetGenImage get paymentIc =>
+      const AssetGenImage('assets/icons/payment_ic.png');
+
+  /// File path: assets/icons/promo_cord_ic.png
+  AssetGenImage get promoCordIc =>
+      const AssetGenImage('assets/icons/promo_cord_ic.png');
+
   /// File path: assets/icons/store_ic.png
   AssetGenImage get storeIc => const AssetGenImage('assets/icons/store_ic.png');
 
@@ -70,11 +103,20 @@ class $AssetsIconsGen {
 
   /// List of all assets
   List<AssetGenImage> get values => [
+    aboutIcon,
+    bellIc,
     cartIc,
+    deliveryIc,
+    editIc,
     exploreIc,
     facebookIc,
     favoriteIc,
     googleIc,
+    helpIcon,
+    myDetailIc,
+    orderIc,
+    paymentIc,
+    promoCordIc,
     storeIc,
     userInfoIc,
   ];
