@@ -5,8 +5,8 @@ import 'package:grocery_go/domain/repository/cart_repository.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable
-class GetCartUserCase extends UseCaseAsync<CartEntity,int>{
-  final CartRepository _cartRepository;
+class GetCartUserCase extends UseCaseAsync<CartEntity, int> {
+  final ICartRepository _cartRepository;
   GetCartUserCase(this._cartRepository);
   @override
   ResultFuture<CartEntity> call(int params) {

@@ -69,21 +69,24 @@ class AppButton extends StatelessWidget {
             color: _getButtonColor(context),
           ),
           width: width ?? (ScreenUtil().screenWidth - 60.w),
-          padding: EdgeInsets.symmetric(vertical: 20.h,horizontal: 20.w),
+          padding: EdgeInsets.symmetric(vertical: 20.h, horizontal: 20.w),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
             mainAxisSize: MainAxisSize.min,
             children: [
               if (leftIconPath != null) ...[
                 Image(image: Assets.icons.logoutIc.provider()),
-                 SizedBox(width: 20.w),
+                SizedBox(width: 20.w),
               ],
-              AppText(
-                content: title,
-                style: AppTypography.text18w600.copyWith(
-                  color: _getTitleColor(context),
+              Expanded(
+                child: AppText(
+                  content: title,
+                  textAlign: TextAlign.center,
+                  style: AppTypography.text18w600.copyWith(
+                    color: _getTitleColor(context),
+                  ),
                 ),
               ),
+              if (leftIconPath != null) ...[SizedBox(width: 40.w)],
             ],
           ),
         ),
@@ -101,7 +104,6 @@ class AppButton extends StatelessWidget {
         return context.theme.brightness == Brightness.dark
             ? AppColorSchemes.green
             : AppColorSchemes.darkGrey;
-
     }
   }
 

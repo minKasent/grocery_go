@@ -25,7 +25,11 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     emit(state.copyWith(isLoading: true));
     try {
       final result = await loginUsecase.call(
-        LoginSchema(username: event.username, password: event.password),
+        LoginSchema(
+          username: event.username,
+          password: event.password,
+          // expiresInMins: 1,
+        ),
       );
       result.fold(
         (failure) {

@@ -2,11 +2,17 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:grocery_go/core/assets_gen/assets.gen.dart';
 import 'package:grocery_go/core/enum/enum_button.dart';
+import 'package:grocery_go/l10n/app_localizations.dart';
 import 'package:grocery_go/presentation/bloc/account/account_bloc.dart';
 import 'package:grocery_go/presentation/bloc/account/account_state.dart';
+import 'package:grocery_go/presentation/bloc/locale/locale_bloc.dart';
+import 'package:grocery_go/presentation/bloc/locale/locale_event.dart';
+import 'package:grocery_go/presentation/bloc/locale/locale_state.dart';
 import 'package:grocery_go/presentation/error/failure_mapper.dart';
+import 'package:grocery_go/presentation/routes/route_name.dart';
 import 'package:grocery_go/presentation/shared/app_button.dart';
 import 'package:grocery_go/presentation/shared/app_text.dart';
 import 'package:grocery_go/presentation/theme/app_color_schemes.dart';
@@ -72,12 +78,13 @@ class AccountScreen extends StatelessWidget {
                     ],
                   ),
                   SizedBox(height: 20.h),
-                  ..._buildListItems(),
+                  ..._buildListItems(context),
                   SizedBox(height: 30.h),
                   AppButton(
-                    onTap: (){
+                    onTap: () {
                       /// log out
                       // context.read<AccountBloc>().add(LogoutEvent());
+                      context.go(RouteName.login);
                     },
                     leftIconPath: true,
                     buttonState: ButtonState.second,
@@ -93,15 +100,14 @@ class AccountScreen extends StatelessWidget {
     );
   }
 
-  Column _buildItemWidget({required String title, required String iconPath}) {
+  Column _buildItemWidget({
+    required String title,
+    required String iconPath,
+    bool hasSwitch = false,
+  }) {
     return Column(
       children: [
-        Divider(
-          color: AppColorSchemes.lightGrey,
-          thickness: 1,
-          indent: 0,
-          endIndent: 0,
-        ),
+        _buildDividerWidget(),
         SizedBox(height: 10.h),
         Row(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -115,7 +121,21 @@ class AccountScreen extends StatelessWidget {
               ),
             ),
             const Spacer(),
-            Icon(Icons.arrow_forward_ios_outlined, size: 20),
+            if (!hasSwitch) Icon(Icons.arrow_forward_ios_outlined, size: 20),
+            if (hasSwitch)
+              BlocBuilder<LocaleBloc, LocaleState>(
+                builder: (context, state) {
+                  return Switch(
+                    value: state.locale == 'en',
+                    onChanged: (value) {
+                      final locale = value ? 'en' : 'vi';
+                      context.read<LocaleBloc>().add(
+                        OnChangeLocaleEvent(locale),
+                      );
+                    },
+                  );
+                },
+              ),
           ],
         ),
         SizedBox(height: 10.h),
@@ -129,37 +149,56 @@ class AccountScreen extends StatelessWidget {
     );
   }
 
-  List<Widget> _buildListItems() {
+  List<Widget> _buildListItems(BuildContext context) {
     return [
-      _buildItemWidget(title: "Orders", iconPath: Assets.icons.orderIc.path),
       _buildItemWidget(
-        title: "My Details",
+        title: AppLocalizations.of(context).orders,
+        iconPath: Assets.icons.orderIc.path,
+      ),
+      _buildItemWidget(
+        title: AppLocalizations.of(context).myDetails,
         iconPath: Assets.icons.myDetailIc.path,
       ),
       _buildItemWidget(
-        title: "Delivery Address",
+        title: AppLocalizations.of(context).deliveryAddress,
         iconPath: Assets.icons.deliveryIc.path,
       ),
       _buildItemWidget(
-        title: "Payment Methods",
+        title: AppLocalizations.of(context).paymentMethods,
         iconPath: Assets.icons.paymentIc.path,
       ),
       _buildItemWidget(
-        title: "Promo Code",
+        title: AppLocalizations.of(context).promoCode,
         iconPath: Assets.icons.promoCordIc.path,
       ),
       _buildItemWidget(
-        title: "Notifications",
+        title: AppLocalizations.of(context).notifications,
         iconPath: Assets.icons.bellIc.path,
       ),
-      _buildItemWidget(title: "Help", iconPath: Assets.icons.helpIcon.path),
-      _buildItemWidget(title: "About", iconPath: Assets.icons.aboutIcon.path),
-      Divider(
-        color: AppColorSchemes.lightGrey,
-        thickness: 1,
-        indent: 0,
-        endIndent: 0,
+      _buildItemWidget(
+        title: AppLocalizations.of(context).help,
+        iconPath: Assets.icons.helpIcon.path,
       ),
+      _buildItemWidget(
+        title: AppLocalizations.of(context).about,
+        iconPath: Assets.icons.aboutIcon.path,
+      ),
+      _buildItemWidget(
+        title: AppLocalizations.of(context).language,
+        iconPath: Assets.icons.aboutIcon.path,
+        hasSwitch: true,
+      ),
+      _buildDividerWidget(),
     ];
+  }
+
+  /// DRY : Don't repeat your code
+  Divider _buildDividerWidget() {
+    return Divider(
+      color: AppColorSchemes.lightGrey,
+      thickness: 1,
+      indent: 0,
+      endIndent: 0,
+    );
   }
 }

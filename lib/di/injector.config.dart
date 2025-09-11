@@ -20,9 +20,15 @@ import 'package:grocery_go/data/datasources/local/secure_storage.dart' as _i606;
 import 'package:grocery_go/data/datasources/remote/api_service.dart' as _i750;
 import 'package:grocery_go/data/repositories/auth_repository_impl.dart'
     as _i697;
+import 'package:grocery_go/data/repositories/cart_repository_impl.dart'
+    as _i981;
 import 'package:grocery_go/di/env_module.dart' as _i271;
 import 'package:grocery_go/di/third_party_module.dart' as _i823;
 import 'package:grocery_go/domain/repository/auth_repository.dart' as _i67;
+import 'package:grocery_go/domain/repository/cart_repository.dart' as _i384;
+import 'package:grocery_go/domain/usecase/get_cart_usecase.dart' as _i515;
+import 'package:grocery_go/domain/usecase/get_favorite_products_usecase.dart'
+    as _i692;
 import 'package:grocery_go/domain/usecase/get_user_info_usecase.dart' as _i149;
 import 'package:grocery_go/domain/usecase/login_usecase.dart' as _i878;
 import 'package:injectable/injectable.dart' as _i526;
@@ -93,6 +99,15 @@ extension GetItInjectableX on _i174.GetIt {
       ),
     );
     gh.lazySingleton<_i750.ApiService>(() => _i750.ApiService(gh<_i361.Dio>()));
+    gh.lazySingleton<_i384.ICartRepository>(
+      () => _i981.CartRepositoryImpl(gh<_i750.ApiService>()),
+    );
+    gh.factory<_i515.GetCartUserCase>(
+      () => _i515.GetCartUserCase(gh<_i384.ICartRepository>()),
+    );
+    gh.factory<_i692.GetFavoriteProductsUsecase>(
+      () => _i692.GetFavoriteProductsUsecase(gh<_i384.ICartRepository>()),
+    );
     gh.lazySingleton<_i67.IAuthRepository>(
       () => _i697.AuthRepositoryImpl(gh<_i750.ApiService>()),
     );
