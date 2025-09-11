@@ -4,6 +4,7 @@ import 'package:grocery_go/presentation/screens/account/account_screen.dart';
 import 'package:grocery_go/presentation/screens/dashboard/dashboard_screen.dart';
 import 'package:grocery_go/presentation/screens/favorite_screen/favorite_screen.dart';
 import 'package:grocery_go/presentation/screens/login/login_screen.dart';
+import 'package:grocery_go/presentation/screens/my_cart_screen/my_cart_screen.dart';
 import 'package:grocery_go/presentation/screens/onboarding_screen/onboarding_screen.dart';
 import 'package:grocery_go/presentation/screens/splash_screen/splash_screen.dart';
 
@@ -40,6 +41,11 @@ class AppRouter {
         path: RouteName.account,
         name: RouteName.account,
         builder: (context, state) => const AccountScreen(),
+      ),
+      GoRoute(
+        path: RouteName.cart,
+        name: RouteName.cart,
+        builder: (context, state) => const MyCartScreen(),
       ),
     ],
   );

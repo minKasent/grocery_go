@@ -130,7 +130,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           password: _passwordController.text.trim(),
                         ),
                       );
-                    },
+                    }, backgroundColor: AppColorSchemes.green,
                   ),
                   const SizedBox(height: 20,),
                   RichText(

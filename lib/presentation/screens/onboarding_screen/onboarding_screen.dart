@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:grocery_go/core/assets_gen/assets.gen.dart';
+import 'package:grocery_go/core/enum/enum_button.dart';
 import 'package:grocery_go/presentation/routes/route_name.dart';
 import 'package:grocery_go/presentation/shared/app_button.dart';
 import 'package:grocery_go/presentation/shared/app_text.dart';
+import 'package:grocery_go/presentation/theme/app_color_schemes.dart';
 import 'package:grocery_go/presentation/theme/app_typography.dart';
 
 class OnboardingScreen extends StatelessWidget {
@@ -34,12 +36,14 @@ class OnboardingScreen extends StatelessWidget {
                 ),
                 AppText(
                   content: "Ger your groceries in as fast as one hour",
-                  style: AppTypography.text16w400,
+                  style: AppTypography.text16w400.copyWith(color: AppColorSchemes.white),
                 ),
                 const SizedBox(height: 25),
                 AppButton(
+                  buttonState: ButtonState.normal,
                   title: "Get Started",
                   onTap: () => context.go(RouteName.login),
+                  backgroundColor: AppColorSchemes.darkGrey,
                 ),
               ],
             ),

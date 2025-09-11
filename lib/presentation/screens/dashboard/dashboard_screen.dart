@@ -6,6 +6,7 @@ import 'package:grocery_go/presentation/bloc/dashboard/dashboard_event.dart';
 import 'package:grocery_go/presentation/bloc/dashboard/dashboard_state.dart';
 import 'package:grocery_go/presentation/screens/account/account_screen.dart';
 import 'package:grocery_go/presentation/screens/favorite_screen/favorite_screen.dart';
+import 'package:grocery_go/presentation/screens/my_cart_screen/my_cart_screen.dart';
 import 'package:grocery_go/presentation/theme/app_color_schemes.dart';
 
 class DashboardScreen extends StatelessWidget {
@@ -18,14 +19,36 @@ class DashboardScreen extends StatelessWidget {
       child: BlocBuilder<DashboardBloc, DashboardState>(
         builder: (context, state) {
           return Scaffold(
-            body: IndexedStack(
-              index: state.currentIndex,
+            body: Stack(
               children: [
-                Container(),
-                Container(),
-                Container(),
-                FavoriteScreen(),
-                AccountScreen(),
+                IndexedStack(
+                  index: state.currentIndex,
+                  children: [
+                    Container(),
+                    Container(),
+                    MyCartScreen(),
+                    FavoriteScreen(),
+                    AccountScreen(),
+                  ],
+                ),
+                Positioned(
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  child: Container(
+                    height: 8,
+                    decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withValues(alpha: 0.2),
+                          spreadRadius: 0,
+                          blurRadius: 8,
+                          offset: Offset(0, 0),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
               ],
             ),
             bottomNavigationBar: _buildBottomNavigationBarWidget(
