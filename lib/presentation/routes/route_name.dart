@@ -7,4 +7,5 @@ class RouteName {
   static const String favorite = '/favorite';
   static const String dashboard = '/dashboard';
   static const String account = '/account';
+  static const String cart = '/cart';
 }

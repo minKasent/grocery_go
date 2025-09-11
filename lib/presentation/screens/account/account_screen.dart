@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:grocery_go/core/assets_gen/assets.gen.dart';
+import 'package:grocery_go/core/enum/enum_button.dart';
 import 'package:grocery_go/presentation/bloc/account/account_bloc.dart';
 import 'package:grocery_go/presentation/bloc/account/account_state.dart';
 import 'package:grocery_go/presentation/error/failure_mapper.dart';
@@ -72,8 +73,17 @@ class AccountScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 20.h),
                   ..._buildListItems(),
-                  SizedBox(height: 20.h),
-                  AppButton(title: 'Log out',),
+                  SizedBox(height: 30.h),
+                  AppButton(
+                    onTap: (){
+                      /// log out
+                      // context.read<AccountBloc>().add(LogoutEvent());
+                    },
+                    leftIconPath: true,
+                    buttonState: ButtonState.second,
+                    title: 'Log out',
+                    backgroundColor: AppColorSchemes.green,
+                  ),
                 ],
               ),
             ),
@@ -82,6 +92,7 @@ class AccountScreen extends StatelessWidget {
       ),
     );
   }
+
   Column _buildItemWidget({required String title, required String iconPath}) {
     return Column(
       children: [
@@ -104,7 +115,7 @@ class AccountScreen extends StatelessWidget {
               ),
             ),
             const Spacer(),
-            Icon(Icons.arrow_forward_ios_outlined,size: 20,),
+            Icon(Icons.arrow_forward_ios_outlined, size: 20),
           ],
         ),
         SizedBox(height: 10.h),
@@ -117,12 +128,10 @@ class AccountScreen extends StatelessWidget {
       ],
     );
   }
+
   List<Widget> _buildListItems() {
     return [
-      _buildItemWidget(
-        title: "Orders",
-        iconPath: Assets.icons.orderIc.path,
-      ),
+      _buildItemWidget(title: "Orders", iconPath: Assets.icons.orderIc.path),
       _buildItemWidget(
         title: "My Details",
         iconPath: Assets.icons.myDetailIc.path,
@@ -143,14 +152,8 @@ class AccountScreen extends StatelessWidget {
         title: "Notifications",
         iconPath: Assets.icons.bellIc.path,
       ),
-      _buildItemWidget(
-        title: "Help",
-        iconPath: Assets.icons.helpIcon.path,
-      ),
-      _buildItemWidget(
-        title: "About",
-        iconPath: Assets.icons.aboutIcon.path,
-      ),
+      _buildItemWidget(title: "Help", iconPath: Assets.icons.helpIcon.path),
+      _buildItemWidget(title: "About", iconPath: Assets.icons.aboutIcon.path),
       Divider(
         color: AppColorSchemes.lightGrey,
         thickness: 1,

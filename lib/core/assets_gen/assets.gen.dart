@@ -52,6 +52,10 @@ class $AssetsIconsGen {
   /// File path: assets/icons/cart_ic.png
   AssetGenImage get cartIc => const AssetGenImage('assets/icons/cart_ic.png');
 
+  /// File path: assets/icons/decrease_ic.png
+  AssetGenImage get decreaseIc =>
+      const AssetGenImage('assets/icons/decrease_ic.png');
+
   /// File path: assets/icons/delivery_ic.png
   AssetGenImage get deliveryIc =>
       const AssetGenImage('assets/icons/delivery_ic.png');
@@ -79,6 +83,14 @@ class $AssetsIconsGen {
   AssetGenImage get helpIcon =>
       const AssetGenImage('assets/icons/help icon.png');
 
+  /// File path: assets/icons/increase_ic.png
+  AssetGenImage get increaseIc =>
+      const AssetGenImage('assets/icons/increase_ic.png');
+
+  /// File path: assets/icons/logout_ic.png
+  AssetGenImage get logoutIc =>
+      const AssetGenImage('assets/icons/logout_ic.png');
+
   /// File path: assets/icons/my_detail_ic.png
   AssetGenImage get myDetailIc =>
       const AssetGenImage('assets/icons/my_detail_ic.png');
@@ -94,6 +106,10 @@ class $AssetsIconsGen {
   AssetGenImage get promoCordIc =>
       const AssetGenImage('assets/icons/promo_cord_ic.png');
 
+  /// File path: assets/icons/remove_ic.png
+  AssetGenImage get removeIc =>
+      const AssetGenImage('assets/icons/remove_ic.png');
+
   /// File path: assets/icons/store_ic.png
   AssetGenImage get storeIc => const AssetGenImage('assets/icons/store_ic.png');
 
@@ -106,6 +122,7 @@ class $AssetsIconsGen {
     aboutIcon,
     bellIc,
     cartIc,
+    decreaseIc,
     deliveryIc,
     editIc,
     exploreIc,
@@ -113,10 +130,13 @@ class $AssetsIconsGen {
     favoriteIc,
     googleIc,
     helpIcon,
+    increaseIc,
+    logoutIc,
     myDetailIc,
     orderIc,
     paymentIc,
     promoCordIc,
+    removeIc,
     storeIc,
     userInfoIc,
   ];

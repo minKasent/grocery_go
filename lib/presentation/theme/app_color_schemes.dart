@@ -8,5 +8,7 @@ class AppColorSchemes {
   static final Color white = Color(0xFFFFFFFF);
   static final Color lightWhite = Color(0xFFFCFCFC);
   static final Color grey = Color(0xFF7C7C7C);
+  static final Color darkGrey = Color(0xFFF2F3F2);
   static final Color lightGrey = Color(0xFFE2E2E2);
+  static final Color borderGrey = Color(0xFFF0F0F0);
 }
