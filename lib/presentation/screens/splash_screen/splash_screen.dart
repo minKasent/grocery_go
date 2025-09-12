@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:grocery_go/data/datasources/local/secure_storage.dart';
+import 'package:grocery_go/di/injector.dart';
 import 'package:grocery_go/presentation/routes/route_name.dart';
 import 'package:grocery_go/presentation/theme/app_color_schemes.dart';
 import 'package:grocery_go/core/assets_gen/assets.gen.dart';
@@ -12,12 +14,18 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  final SecureStorage secureStorage = getIt<SecureStorage>();
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       await Future.delayed(const Duration(seconds: 2));
+      final accessToken = await secureStorage.getAccessToken();
       if (mounted) {
-        context.go(RouteName.getStarted);
+        if (accessToken != null && accessToken.isNotEmpty) {
+          context.go(RouteName.dashboard);
+        } else {
+          context.go(RouteName.getStarted);
+        }
       }
     });
     super.initState();

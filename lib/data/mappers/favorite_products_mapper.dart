@@ -6,7 +6,7 @@ extension ListOfFavoriteProductsMapper on FavoriteProductsDto {
     return ListOfFavoriteProductsEntity(
       listOfFavoriteProducts: List.from(
         products.map(
-              (product) => FavoriteProductEntity(
+          (product) => FavoriteProductEntity(
             id: product.id,
             title: product.title,
             price: product.price,

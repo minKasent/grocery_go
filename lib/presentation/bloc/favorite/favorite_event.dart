@@ -1,10 +1,9 @@
 abstract class FavoriteEvent {}
 
-class OnGetFavoriteProductEvent extends FavoriteEvent {
+class OnGetFavoriteProductsEvent extends FavoriteEvent {
   final int id;
 
-  OnGetFavoriteProductEvent({required this.id});
+  OnGetFavoriteProductsEvent({required this.id});
 }
 
 class OnClearFavoriteErrorMessageEvent extends FavoriteEvent {}
-

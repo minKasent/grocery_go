@@ -21,13 +21,11 @@ abstract class ApiService {
   @GET('/auth/me')
   Future<UserInfoDto> getUserInfo();
 
-  // @GET('/carts/{id}')
-  // Future<void> getASingleCart(@Path('id') int cartId);
-
-// @GET('/carts')
-//   Future<List> getAllCarts();
-  @GET('/cart/{id}')
+  @GET('/carts/{id}')
   Future<FavoriteProductsDto> getFavoriteProducts(@Path('id') int cartId);
+
+  // @GET('/carts')
+  //   Future<List> getAllCarts();
 
   @GET('/carts/user/{userId}')
   Future<CartsResponse> getUserCarts(@Path('userId') int userId);
