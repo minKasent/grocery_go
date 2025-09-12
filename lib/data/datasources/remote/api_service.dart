@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:grocery_go/data/models/requests/login_schema.dart';
 import 'package:grocery_go/data/models/responses/cart_dto.dart';
+import 'package:grocery_go/data/models/responses/favorite_products_dto.dart';
 import 'package:grocery_go/data/models/responses/login_dto.dart';
 import 'package:grocery_go/data/models/responses/user_info_dto.dart';
 import 'package:injectable/injectable.dart';
@@ -25,6 +26,8 @@ abstract class ApiService {
 
 // @GET('/carts')
 //   Future<List> getAllCarts();
+  @GET('/cart/{id}')
+  Future<FavoriteProductsDto> getFavoriteProducts(@Path('id') int cartId);
 
   @GET('/carts/user/{userId}')
   Future<CartsResponse> getUserCarts(@Path('userId') int userId);
