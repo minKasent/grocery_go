@@ -6,23 +6,21 @@ part of 'cart_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-CartsResponse _$CartsResponseFromJson(Map<String, dynamic> json) =>
-    CartsResponse(
-      carts: (json['carts'] as List<dynamic>)
-          .map((e) => CartDto.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      total: (json['total'] as num).toInt(),
-      skip: (json['skip'] as num).toInt(),
-      limit: (json['limit'] as num).toInt(),
-    );
+CartsDto _$CartsDtoFromJson(Map<String, dynamic> json) => CartsDto(
+  carts: (json['carts'] as List<dynamic>)
+      .map((e) => CartDto.fromJson(e as Map<String, dynamic>))
+      .toList(),
+  total: (json['total'] as num).toInt(),
+  skip: (json['skip'] as num).toInt(),
+  limit: (json['limit'] as num).toInt(),
+);
 
-Map<String, dynamic> _$CartsResponseToJson(CartsResponse instance) =>
-    <String, dynamic>{
-      'carts': instance.carts.map((e) => e.toJson()).toList(),
-      'total': instance.total,
-      'skip': instance.skip,
-      'limit': instance.limit,
-    };
+Map<String, dynamic> _$CartsDtoToJson(CartsDto instance) => <String, dynamic>{
+  'carts': instance.carts.map((e) => e.toJson()).toList(),
+  'total': instance.total,
+  'skip': instance.skip,
+  'limit': instance.limit,
+};
 
 CartDto _$CartDtoFromJson(Map<String, dynamic> json) => CartDto(
   id: (json['id'] as num).toInt(),
@@ -53,7 +51,7 @@ ProductDto _$ProductDtoFromJson(Map<String, dynamic> json) => ProductDto(
   quantity: (json['quantity'] as num).toInt(),
   total: (json['total'] as num).toDouble(),
   discountPercentage: (json['discountPercentage'] as num).toDouble(),
-  discountedTotal: (json['discountedTotal'] as num).toDouble(),
+  discountedTotal: (json['discountedTotal'] as num?)?.toDouble(),
   thumbnail: json['thumbnail'] as String,
 );
 
