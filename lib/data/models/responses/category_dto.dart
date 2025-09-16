@@ -8,11 +8,7 @@ class CategoryDto {
   final String name;
   final String url;
 
-  CategoryDto({
-    required this.slug,
-    required this.name,
-    required this.url,
-  });
+  CategoryDto({required this.slug, required this.name, required this.url});
 
   factory CategoryDto.fromJson(Map<String, dynamic> json) =>
       _$CategoryDtoFromJson(json);

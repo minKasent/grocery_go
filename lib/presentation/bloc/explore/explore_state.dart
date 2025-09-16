@@ -4,18 +4,18 @@ import 'package:grocery_go/domain/entities/category_entity.dart';
 class ExploreState extends Equatable {
   final bool isLoading;
   final String apiErrorMessage;
-  final CategoryEntity? categoryEntity;
+  final List<CategoryEntity> categoryEntity;
 
   const ExploreState({
     this.isLoading = false,
     this.apiErrorMessage = '',
-    this.categoryEntity,
+    this.categoryEntity = const [],
   });
 
   ExploreState copyWith({
     bool? isLoading,
     String? apiErrorMessage,
-    CategoryEntity? categoryEntity,
+    List<CategoryEntity>? categoryEntity,
   }) {
     return ExploreState(
       isLoading: isLoading ?? this.isLoading,

@@ -217,11 +217,14 @@ class MyCartView extends StatelessWidget {
                 padding: const EdgeInsets.only(bottom: 30),
                 child: BlocBuilder<CartBloc, CartState>(
                   builder: (context, state) {
-                    return AppButton(
-                      title: "Go to Checkout",
-                      subText: '\$${state.cartEntity!.total}',
-                      backgroundColor: AppColorSchemes.green,
-                    );
+                    if (state.cartEntity != null) {
+                      return AppButton(
+                        title: "Go to Checkout",
+                        subText: '\$${state.cartEntity!.total}',
+                        backgroundColor: AppColorSchemes.green,
+                      );
+                    }
+                    return Text("Error Loading Cart");
                   },
                 ),
               ),

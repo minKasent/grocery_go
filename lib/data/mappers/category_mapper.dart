@@ -6,7 +6,8 @@ extension CategoryMapper on CategoryDto {
     return CategoryEntity(
       slug: slug,
       name: name,
-      url: url,
+      thumbnail:
+          'https://cdn.dummyjson.com/product-images/furniture/annibale-colombo-sofa/2.webp',
     );
   }
 }

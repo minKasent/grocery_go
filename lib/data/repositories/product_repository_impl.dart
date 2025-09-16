@@ -1,6 +1,10 @@
 import 'package:grocery_go/data/core/guard.dart';
 import 'package:grocery_go/data/datasources/remote/api_service.dart';
+import 'package:grocery_go/data/mappers/category_mapper.dart';
+import 'package:grocery_go/data/mappers/product_mapper.dart';
 import 'package:grocery_go/domain/core/result.dart';
+import 'package:grocery_go/domain/entities/category_entity.dart';
+import 'package:grocery_go/domain/entities/product_entity.dart';
 import 'package:grocery_go/domain/repository/product_repository.dart';
 import 'package:injectable/injectable.dart';
 
@@ -14,6 +18,22 @@ class ProductRepositoryImpl implements IProductRepository {
   ResultFuture<void> deleteAProduct(int id) {
     return guardDio<void>(() async {
       await apiService.deleteAProduct(id);
+    });
+  }
+
+  @override
+  ResultFuture<ListOfCategoryProductsEntity> getAllProducts() {
+    return guardDio<ListOfCategoryProductsEntity>(() async {
+      final dto = await apiService.getAllProducts();
+      return dto.toEntity();
+    });
+  }
+
+  @override
+  ResultFuture<List<CategoryEntity>> getProductsCategory() {
+    return guardDio<List<CategoryEntity>>(() async {
+      final dto = await apiService.getProductsCategory();
+      return dto.map((e) => e.toEntity()).toList();
     });
   }
 }
