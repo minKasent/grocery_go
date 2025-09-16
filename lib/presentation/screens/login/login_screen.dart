@@ -169,11 +169,11 @@ class _LoginScreenState extends State<LoginScreen> {
           } else {
             CommonDialogs.hideLoadingDialog(context);
             if (state.apiErrorMessage.isNotEmpty) {
-              CommonDialogs.showAlertDialog(
-                context,
+              CommonDialogs.showErrorDialog(
+                context: context,
                 title: 'Error',
                 message: state.apiErrorMessage,
-                onPressed: () => context.read<LoginBloc>().add(
+                onTap: () => context.read<LoginBloc>().add(
                   OnClearLoginErrorMessageEvent(),
                 ),
               );

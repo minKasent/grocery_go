@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:grocery_go/data/models/requests/login_schema.dart';
+import 'package:grocery_go/data/models/requests/update_a_cart_schema.dart';
 import 'package:grocery_go/data/models/responses/cart_dto.dart';
 import 'package:grocery_go/data/models/responses/favorite_products_dto.dart';
 import 'package:grocery_go/data/models/responses/login_dto.dart';
@@ -27,6 +28,12 @@ abstract class ApiService {
   // @GET('/carts')
   //   Future<List> getAllCarts();
 
-  @GET('/carts/user/{userId}')
-  Future<CartsResponse> getUserCarts(@Path('userId') int userId);
+  @GET('/carts/user/{id}')
+  Future<CartsDto> getUserCarts(@Path('id') int userId);
+
+  @DELETE('/products/{id}')
+  Future<void> deleteAProduct(@Path('id') int id);
+
+  @PUT('/carts/{id}')
+  Future<CartDto> updateACart(@Body() UpdateACartSchema schema, @Path() int id);
 }
