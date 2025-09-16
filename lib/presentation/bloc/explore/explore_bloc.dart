@@ -58,12 +58,17 @@ class ExploreBloc extends Bloc<ExploreEvent, ExploreState> {
     OnSearchCategoryEvent event,
     Emitter<ExploreState> emit,
   ) {
-    if (event.query.trim().toLowerCase().isNotEmpty) {
-      final newCategoryEntity = state.categoryEntity
-          .where((e) => e.name.toLowerCase().contains(event.query))
-          .toList();
-      emit(state.copyWith(categoryEntity: newCategoryEntity));
+    final query = event.query.trim().toLowerCase();
+
+    if (query.isNotEmpty) {
+      final filteredCategories = _cachedCategoryEntity.where((category) {
+        final name = category.name.toLowerCase();
+        return name.contains(query);
+      }).toList();
+
+      emit(state.copyWith(categoryEntity: filteredCategories));
     } else {
+      // Nếu query rỗng -> trả lại danh sách gốc
       emit(state.copyWith(categoryEntity: _cachedCategoryEntity));
     }
   }
