@@ -5,6 +5,7 @@ import 'package:grocery_go/presentation/bloc/dashboard/dashboard_bloc.dart';
 import 'package:grocery_go/presentation/bloc/dashboard/dashboard_event.dart';
 import 'package:grocery_go/presentation/bloc/dashboard/dashboard_state.dart';
 import 'package:grocery_go/presentation/screens/account/account_screen.dart';
+import 'package:grocery_go/presentation/screens/explore_screen/explore_screen.dart';
 import 'package:grocery_go/presentation/screens/favorite_screen/favorite_screen.dart';
 import 'package:grocery_go/presentation/screens/my_cart_screen/my_cart_screen.dart';
 import 'package:grocery_go/presentation/theme/app_color_schemes.dart';
@@ -25,7 +26,7 @@ class DashboardScreen extends StatelessWidget {
                   index: state.currentIndex,
                   children: [
                     Container(),
-                    Container(),
+                    ExploreScreen(),
                     MyCartScreen(),
                     FavoriteScreen(),
                     AccountScreen(),
