@@ -3,15 +3,23 @@ import 'package:equatable/equatable.dart';
 class CategoryEntity extends Equatable {
   final String slug;
   final String name;
-  final String url;
+  final String thumbnail;
 
-  CategoryEntity({
+  const CategoryEntity({
     required this.slug,
     required this.name,
-    required this.url,
+    required this.thumbnail,
   });
 
   @override
-  // TODO: implement props
-  List<Object?> get props => [slug, name, url];
+  List<Object?> get props => [slug, name, thumbnail];
 }
+
+// class ListOfCategoryEntity extends Equatable {
+//   final List<CategoryEntity> listOfCategoryEntity;
+
+//   const ListOfCategoryEntity({required this.listOfCategoryEntity});
+
+//   @override
+//   List<Object?> get props => [listOfCategoryEntity];
+// }

@@ -1,10 +1,11 @@
-
 abstract class ExploreEvent {}
 
-class OnGetCategoryEvent extends ExploreEvent {
-  final String slug;
+class OnGetCategoryEvent extends ExploreEvent {}
 
-  OnGetCategoryEvent(this.slug);
+class OnClearExploreErrorMessageEvent extends ExploreEvent {}
+
+class OnSearchCategoryEvent extends ExploreEvent {
+  final String query;
+
+  OnSearchCategoryEvent(this.query);
 }
-
-
