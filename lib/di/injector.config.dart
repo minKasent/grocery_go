@@ -22,16 +22,19 @@ import 'package:grocery_go/data/repositories/auth_repository_impl.dart'
     as _i697;
 import 'package:grocery_go/data/repositories/cart_repository_impl.dart'
     as _i981;
+import 'package:grocery_go/data/repositories/category_impl.dart' as _i517;
 import 'package:grocery_go/data/repositories/product_repository_impl.dart'
     as _i568;
 import 'package:grocery_go/di/env_module.dart' as _i271;
 import 'package:grocery_go/di/third_party_module.dart' as _i823;
 import 'package:grocery_go/domain/repository/auth_repository.dart' as _i67;
 import 'package:grocery_go/domain/repository/cart_repository.dart' as _i384;
+import 'package:grocery_go/domain/repository/category_repository.dart' as _i283;
 import 'package:grocery_go/domain/repository/product_repository.dart' as _i676;
 import 'package:grocery_go/domain/usecase/delete_a_product_usecase.dart'
     as _i720;
 import 'package:grocery_go/domain/usecase/get_cart_usecase.dart' as _i515;
+import 'package:grocery_go/domain/usecase/get_category_usecase.dart' as _i527;
 import 'package:grocery_go/domain/usecase/get_favorite_products_usecase.dart'
     as _i692;
 import 'package:grocery_go/domain/usecase/get_user_info_usecase.dart' as _i149;
@@ -111,6 +114,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i384.ICartRepository>(
       () => _i981.CartRepositoryImpl(gh<_i750.ApiService>()),
     );
+    gh.lazySingleton<_i283.ICategoryRepository>(
+      () => _i517.CategoryRepositoryImpl(gh<_i750.ApiService>()),
+    );
     gh.factory<_i720.DeleteAProductUsecase>(
       () => _i720.DeleteAProductUsecase(gh<_i676.IProductRepository>()),
     );
@@ -125,6 +131,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.lazySingleton<_i67.IAuthRepository>(
       () => _i697.AuthRepositoryImpl(gh<_i750.ApiService>()),
+    );
+    gh.factory<_i527.GetCategoryUseCase>(
+      () => _i527.GetCategoryUseCase(gh<_i283.ICategoryRepository>()),
     );
     gh.factory<_i878.LoginUsecase>(
       () => _i878.LoginUsecase(gh<_i67.IAuthRepository>()),
