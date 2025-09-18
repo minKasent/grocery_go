@@ -4,10 +4,12 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:grocery_go/presentation/bloc/explore/explore_bloc.dart';
 import 'package:grocery_go/presentation/bloc/explore/explore_event.dart';
 import 'package:grocery_go/presentation/bloc/explore/explore_state.dart';
 import 'package:grocery_go/presentation/error/failure_mapper.dart';
+import 'package:grocery_go/presentation/routes/route_name.dart';
 import 'package:grocery_go/presentation/shared/app_text.dart';
 import 'package:grocery_go/presentation/shared/app_text_field.dart';
 import 'package:grocery_go/presentation/shared/common_dialogs.dart';
@@ -38,13 +40,12 @@ class _ExploreView extends StatelessWidget {
             SizedBox(height: 20.h),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 25.w),
-              child:
-              // TextField(
-              //   onChanged: (value) {
-              //     context.read<ExploreBloc>().add(OnSearchCategoryEvent(value));
-              //   },
-              // ),
-              SearchTextField(title: 'Search Store',),
+              child: SearchTextField(
+                title: 'Search Store',
+                onChanged: (value) {
+                  context.read<ExploreBloc>().add(OnSearchCategoryEvent(value));
+                },
+              ),
             ),
             Expanded(
               child: Padding(
@@ -66,40 +67,50 @@ class _ExploreView extends StatelessWidget {
                         .primaries[random.nextInt(Colors.primaries.length)]
                         .shade50;
 
-                    final borderColor =
-                        Colors.primaries[random.nextInt(Colors.primaries.length)];
+                    final borderColor = Colors
+                        .primaries[random.nextInt(Colors.primaries.length)];
 
-                    return Container(
-                      decoration: BoxDecoration(
-                        color: bgColor,
-                        border: Border.all(color: borderColor, width: 1.5),
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Expanded(
-                            child: CachedNetworkImage(
-                              imageUrl: item.thumbnail,
-                              fit: BoxFit.contain,
-                              height: 75.h,
-                              width: 112.w,
-                            ),
-                          ),
-                          const SizedBox(height: 8),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 8),
-                            child: Text(
-                              item.name,
-                              textAlign: TextAlign.center,
-                              style: const TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
+                    return GestureDetector(
+                      onTap: () {
+                        context.pushNamed(
+                          RouteName.categoryProduct,
+                          extra: item.slug,
+                        );
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: bgColor,
+                          border: Border.all(color: borderColor, width: 1.5),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Expanded(
+                              child: CachedNetworkImage(
+                                imageUrl: item.thumbnail,
+                                fit: BoxFit.contain,
+                                height: 75.h,
+                                width: 112.w,
                               ),
                             ),
-                          ),
-                          const SizedBox(height: 8),
-                        ],
+                            const SizedBox(height: 8),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 8,
+                              ),
+                              child: Text(
+                                item.name,
+                                textAlign: TextAlign.center,
+                                style: const TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ),
+                            const SizedBox(height: 8),
+                          ],
+                        ),
                       ),
                     );
                   },

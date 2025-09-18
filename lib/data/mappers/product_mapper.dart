@@ -15,6 +15,9 @@ extension ProductResponseMapper on ProductResponseDto {
         price: dto.price ?? 0.0,
         thumbnail: dto.thumbnail ?? '',
         weight: dto.weight ?? 0,
+        images: dto.images ?? [],
+        description: dto.description ?? '',
+        rating: dto.rating ?? 0.0,
       );
 
       if (grouped.containsKey(category)) {
@@ -44,5 +47,23 @@ extension ProductResponseMapper on ProductResponseDto {
     return ListOfCategoryProductsEntity(
       listOfCategoryProductsEntity: listOfCategory,
     );
+  }
+}
+
+extension ProductMapper on ProductResponseDto {
+  ListOfProductsEntity toListOfProductsEntity() {
+    final productsList = products?.map((dto) {
+      return ProductEntity(
+        title: dto.title ?? '',
+        price: dto.price ?? 0.0,
+        thumbnail: dto.thumbnail ?? '',
+        weight: dto.weight ?? 0,
+        images: dto.images ?? [],
+        description: dto.description ?? '',
+        rating: dto.rating ?? 0.0,
+      );
+    }).toList();
+
+    return ListOfProductsEntity(listOfProductsEntity: productsList ?? []);
   }
 }

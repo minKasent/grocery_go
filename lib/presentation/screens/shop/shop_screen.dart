@@ -2,12 +2,14 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:grocery_go/core/assets_gen/assets.gen.dart';
 import 'package:grocery_go/core/extensions/context_extention.dart';
 import 'package:grocery_go/presentation/bloc/shop/shop_bloc.dart';
 import 'package:grocery_go/presentation/bloc/shop/shop_event.dart';
 import 'package:grocery_go/presentation/bloc/shop/shop_state.dart';
 import 'package:grocery_go/presentation/error/failure_mapper.dart';
+import 'package:grocery_go/presentation/routes/route_name.dart';
 import 'package:grocery_go/presentation/shared/app_text.dart';
 import 'package:grocery_go/presentation/shared/app_text_field.dart';
 import 'package:grocery_go/presentation/shared/common_dialogs.dart';
@@ -55,7 +57,7 @@ class _ShopView extends StatelessWidget {
               SizedBox(height: 20.h),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 25.w),
-                child: SearchTextField(title: 'Search Store',),
+                child: SearchTextField(title: 'Search Store'),
               ),
               SizedBox(height: 20.h),
               SizedBox(
@@ -101,48 +103,60 @@ class _ShopView extends StatelessWidget {
                             scrollDirection: Axis.horizontal,
                             itemBuilder: (context, index) {
                               final product = item.products[index];
-                              return Container(
-                                width: (context.screenWidth - 40.w) / 2,
-                                height: 250.h,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(12.r),
-                                  border: Border.all(color: Colors.grey),
-                                ),
-                                padding: EdgeInsets.all(15.w),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Center(
-                                      child: CachedNetworkImage(
-                                        imageUrl: product.thumbnail,
-                                        width: 90.w,
-                                        height: 80.h,
-                                      ),
-                                    ),
-                                    // SizedBox(height: 25.h),
-                                    AppText(content: product.title),
-                                    AppText(content: product.weight.toString()),
-                                    // SizedBox(height: 20.h),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        AppText(content: '\$${product.price}'),
-                                        Container(
-                                          height: 45.w,
-                                          width: 45.w,
-                                          decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(
-                                              100.r,
-                                            ),
-                                            color: Colors.green,
-                                          ),
+                              return GestureDetector(
+                                onTap: () {
+                                  context.pushNamed(
+                                    RouteName.productDetail,
+                                    extra: product,
+                                  );
+                                },
+                                child: Container(
+                                  width: (context.screenWidth - 40.w) / 2,
+                                  height: 250.h,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(12.r),
+                                    border: Border.all(color: Colors.grey),
+                                  ),
+                                  padding: EdgeInsets.all(15.w),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Center(
+                                        child: CachedNetworkImage(
+                                          imageUrl: product.thumbnail,
+                                          width: 90.w,
+                                          height: 80.h,
                                         ),
-                                      ],
-                                    ),
-                                  ],
+                                      ),
+                                      // SizedBox(height: 25.h),
+                                      AppText(content: product.title),
+                                      AppText(
+                                        content: product.weight.toString(),
+                                      ),
+                                      // SizedBox(height: 20.h),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          AppText(
+                                            content: '\$${product.price}',
+                                          ),
+                                          Container(
+                                            height: 45.w,
+                                            width: 45.w,
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(100.r),
+                                              color: Colors.green,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               );
                             },

@@ -8,4 +8,6 @@ abstract class IProductRepository {
   ResultFuture<ListOfCategoryProductsEntity> getAllProducts();
 
   ResultFuture<List<CategoryEntity>> getProductsCategory();
+
+  ResultFuture<ListOfProductsEntity> getListOfProducts(String slug);
 }

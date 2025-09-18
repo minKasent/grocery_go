@@ -8,4 +8,7 @@ class RouteName {
   static const String dashboard = '/dashboard';
   static const String account = '/account';
   static const String cart = '/cart';
+  static const String explore = '/explore';
+  static const String productDetail = '/productDetail';
+  static const String categoryProduct = '/categoryProduct';
 }

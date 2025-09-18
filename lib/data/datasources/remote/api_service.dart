@@ -44,4 +44,7 @@ abstract class ApiService {
 
   @GET('/products')
   Future<ProductResponseDto> getAllProducts();
+
+  @GET('/products/category/{slug}')
+  Future<ProductResponseDto> getProductsByCategory(@Path('slug') String slug);
 }

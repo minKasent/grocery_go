@@ -5,16 +5,39 @@ class ProductEntity extends Equatable {
   final double price;
   final String thumbnail;
   final int weight;
+  final List<String> images;
+  final String description;
+  final double rating;
 
   const ProductEntity({
     required this.price,
     required this.thumbnail,
     required this.title,
     required this.weight,
+    required this.images,
+    required this.description,
+    required this.rating,
   });
 
   @override
-  List<Object?> get props => [price, thumbnail, title, weight];
+  List<Object?> get props => [
+    price,
+    thumbnail,
+    title,
+    weight,
+    images,
+    description,
+    rating,
+  ];
+}
+
+class ListOfProductsEntity extends Equatable {
+  final List<ProductEntity> listOfProductsEntity;
+
+  const ListOfProductsEntity({required this.listOfProductsEntity});
+
+  @override
+  List<Object?> get props => [listOfProductsEntity];
 }
 
 class CategoryProductsEntity extends Equatable {

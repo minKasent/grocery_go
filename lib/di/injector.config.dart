@@ -38,6 +38,8 @@ import 'package:grocery_go/domain/usecase/get_cart_usecase.dart' as _i515;
 import 'package:grocery_go/domain/usecase/get_category_usecase.dart' as _i527;
 import 'package:grocery_go/domain/usecase/get_favorite_products_usecase.dart'
     as _i692;
+import 'package:grocery_go/domain/usecase/get_list_products_category_usecase.dart'
+    as _i695;
 import 'package:grocery_go/domain/usecase/get_products_category_usecase.dart'
     as _i376;
 import 'package:grocery_go/domain/usecase/get_user_info_usecase.dart' as _i149;
@@ -128,6 +130,10 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i376.GetProductsCategoryUsecase>(
       () => _i376.GetProductsCategoryUsecase(gh<_i676.IProductRepository>()),
+    );
+    gh.factory<_i695.GetListProductsCategoryUsecase>(
+      () =>
+          _i695.GetListProductsCategoryUsecase(gh<_i676.IProductRepository>()),
     );
     gh.factory<_i515.GetCartUserCase>(
       () => _i515.GetCartUserCase(gh<_i384.ICartRepository>()),
