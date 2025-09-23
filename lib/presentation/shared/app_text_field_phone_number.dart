@@ -14,9 +14,9 @@ class AppTextFieldPhoneNumber extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Image(image: Assets.images.flag.provider()),
-            const SizedBox(width: 10,),
+            const SizedBox(width: 10),
             AppText(content: "+880"),
-            const SizedBox(width: 10,),
+            const SizedBox(width: 10),
           ],
         ),
       ),

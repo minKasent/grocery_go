@@ -36,7 +36,9 @@ class OnboardingScreen extends StatelessWidget {
                 ),
                 AppText(
                   content: "Ger your groceries in as fast as one hour",
-                  style: AppTypography.text16w400.copyWith(color: AppColorSchemes.white),
+                  style: AppTypography.text16w400.copyWith(
+                    color: AppColorSchemes.white,
+                  ),
                 ),
                 const SizedBox(height: 25),
                 AppButton(

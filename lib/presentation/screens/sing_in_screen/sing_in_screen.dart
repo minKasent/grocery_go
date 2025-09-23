@@ -6,7 +6,6 @@ import 'package:grocery_go/presentation/shared/app_text_field_phone_number.dart'
 import 'package:grocery_go/presentation/theme/app_color_schemes.dart';
 import 'package:grocery_go/presentation/theme/app_typography.dart';
 
-
 class SingInScreen extends StatelessWidget {
   const SingInScreen({super.key});
 
@@ -40,15 +39,9 @@ class SingInScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 30),
-                AppButtonSinginWidget(
-                  isGoogle: true,
-                  onTap: () {},
-                ),
+                AppButtonSinginWidget(isGoogle: true, onTap: () {}),
                 const SizedBox(height: 20),
-                AppButtonSinginWidget(
-                  isGoogle: false,
-                  onTap: () {},
-                )
+                AppButtonSinginWidget(isGoogle: false, onTap: () {}),
               ],
             ),
           ),
