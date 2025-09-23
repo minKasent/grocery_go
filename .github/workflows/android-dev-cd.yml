@@ -1,7 +1,7 @@
 name: CD Dev Android
 
 on:
-  merge_request:
+  push:
     branches:
       - develop
       - main
