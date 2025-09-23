@@ -73,21 +73,25 @@ class _LoginScreenState extends State<LoginScreen> {
                             color: AppColorSchemes.grey,
                           ),
                         ),
-                        const SizedBox(height: 30,),
-                        AppText(content: "Email",style: AppTypography.text16w600,)
+                        const SizedBox(height: 30),
+                        AppText(
+                          content: "Email",
+                          style: AppTypography.text16w600,
+                        ),
                       ],
                     ),
                   ),
                   TextField(
                     controller: _userNameController,
-                    decoration: InputDecoration(
-                      hintText: 'Enter your email',
-                    ),
+                    decoration: InputDecoration(hintText: 'Enter your email'),
                   ),
-                  const SizedBox(height: 40,),
+                  const SizedBox(height: 40),
                   Align(
                     alignment: Alignment.centerLeft,
-                    child: AppText(content: "Password",style: AppTypography.text16w600,),
+                    child: AppText(
+                      content: "Password",
+                      style: AppTypography.text16w600,
+                    ),
                   ),
                   TextField(
                     controller: _passwordController,
@@ -116,7 +120,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       },
                       child: Text(
                         'Forgot Password?',
-                        style: AppTypography.text14w600
+                        style: AppTypography.text14w600,
                       ),
                     ),
                   ),
@@ -130,17 +134,22 @@ class _LoginScreenState extends State<LoginScreen> {
                           password: _passwordController.text.trim(),
                         ),
                       );
-                    }, backgroundColor: AppColorSchemes.green,
+                    },
+                    backgroundColor: AppColorSchemes.green,
                   ),
-                  const SizedBox(height: 20,),
+                  const SizedBox(height: 20),
                   RichText(
                     text: TextSpan(
                       text: "Don't have an account? ",
-                      style: AppTypography.text14w600.copyWith(color: AppColorSchemes.black),
+                      style: AppTypography.text14w600.copyWith(
+                        color: AppColorSchemes.black,
+                      ),
                       children: [
                         TextSpan(
                           text: "Sign Up",
-                          style: AppTypography.text14w600.copyWith(color: AppColorSchemes.green),
+                          style: AppTypography.text14w600.copyWith(
+                            color: AppColorSchemes.green,
+                          ),
                           recognizer: TapGestureRecognizer()
                             ..onTap = () {
                               context.go(RouteName.account);
@@ -148,7 +157,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ],
                     ),
-                  )
+                  ),
                 ],
               ),
             ),
@@ -160,11 +169,11 @@ class _LoginScreenState extends State<LoginScreen> {
           } else {
             CommonDialogs.hideLoadingDialog(context);
             if (state.apiErrorMessage.isNotEmpty) {
-              CommonDialogs.showAlertDialog(
-                context,
+              CommonDialogs.showErrorDialog(
+                context: context,
                 title: 'Error',
                 message: state.apiErrorMessage,
-                onPressed: () => context.read<LoginBloc>().add(
+                onTap: () => context.read<LoginBloc>().add(
                   OnClearLoginErrorMessageEvent(),
                 ),
               );

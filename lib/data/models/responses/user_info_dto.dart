@@ -68,7 +68,10 @@
 //     },
 //     "role": "admin"
 // }
-/// dto -> Data transfer object
+
+/// [dto -> Data transfer object]
+library;
+
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'user_info_dto.g.dart';

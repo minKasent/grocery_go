@@ -45,6 +45,7 @@ class AppButton extends StatelessWidget {
   final bool? leftIconPath;
   final String title;
   final double? width;
+  final String subText;
 
   const AppButton({
     required this.title,
@@ -52,6 +53,7 @@ class AppButton extends StatelessWidget {
     this.onTap,
     this.buttonState = ButtonState.normal,
     this.width = double.infinity,
+    this.subText = '',
     super.key,
     required Color backgroundColor,
   });
@@ -62,30 +64,57 @@ class AppButton extends StatelessWidget {
       onTap: onTap,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: Container(
-          decoration: BoxDecoration(
-            border: Border.all(color: _getBorderColor(context), width: 2),
-            borderRadius: BorderRadius.circular(19),
-            color: _getButtonColor(context),
-          ),
-          width: width ?? (ScreenUtil().screenWidth - 60.w),
-          padding: EdgeInsets.symmetric(vertical: 20.h,horizontal: 20.w),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              if (leftIconPath != null) ...[
-                Image(image: Assets.icons.logoutIc.provider()),
-                 SizedBox(width: 20.w),
-              ],
-              AppText(
-                content: title,
-                style: AppTypography.text18w600.copyWith(
-                  color: _getTitleColor(context),
+        child: Stack(
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                border: Border.all(color: _getBorderColor(context), width: 2),
+                borderRadius: BorderRadius.circular(19),
+                color: _getButtonColor(context),
+              ),
+              width: width ?? (ScreenUtil().screenWidth - 60.w),
+              padding: EdgeInsets.symmetric(vertical: 20.h, horizontal: 20.w),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  if (leftIconPath != null) ...[
+                    Image(image: Assets.icons.logoutIc.provider()),
+                    SizedBox(width: 20.w),
+                  ],
+                  Expanded(
+                    child: AppText(
+                      content: title,
+                      textAlign: TextAlign.center,
+                      style: AppTypography.text18w600.copyWith(
+                        color: _getTitleColor(context),
+                      ),
+                    ),
+                  ),
+                  if (leftIconPath != null) ...[SizedBox(width: 40.w)],
+                ],
+              ),
+            ),
+            if (subText.isNotEmpty)
+              Positioned(
+                top: 22.5.h,
+                bottom: 22.5.h,
+                right: 24.w,
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: AppColorSchemes.darkBlue,
+                    borderRadius: BorderRadius.circular(4),
+                  ),
+                  padding: EdgeInsets.symmetric(horizontal: 5, vertical: 2),
+                  child: AppText(
+                    content: subText,
+                    textAlign: TextAlign.center,
+                    style: AppTypography.text18w600.copyWith(
+                      color: _getTitleColor(context),
+                    ),
+                  ),
                 ),
               ),
-            ],
-          ),
+          ],
         ),
       ),
     );
@@ -101,7 +130,6 @@ class AppButton extends StatelessWidget {
         return context.theme.brightness == Brightness.dark
             ? AppColorSchemes.green
             : AppColorSchemes.darkGrey;
-
     }
   }
 

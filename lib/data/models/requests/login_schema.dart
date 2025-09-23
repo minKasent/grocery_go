@@ -5,8 +5,13 @@ part 'login_schema.g.dart';
 class LoginSchema {
   final String username;
   final String password;
+  final int expiresInMins;
 
-  LoginSchema({required this.username, required this.password});
+  LoginSchema({
+    required this.username,
+    required this.password,
+    this.expiresInMins = 30,
+  });
 
   /// toJson
   Map<String, dynamic> toJson() => _$LoginSchemaToJson(this);

@@ -3,23 +3,23 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'cart_dto.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class CartsResponse {
+class CartsDto {
   final List<CartDto> carts;
   final int total;
   final int skip;
   final int limit;
 
-  const CartsResponse({
+  const CartsDto({
     required this.carts,
     required this.total,
     required this.skip,
     required this.limit,
   });
 
-  factory CartsResponse.fromJson(Map<String, dynamic> json) =>
-      _$CartsResponseFromJson(json);
+  factory CartsDto.fromJson(Map<String, dynamic> json) =>
+      _$CartsDtoFromJson(json);
 
-  Map<String, dynamic> toJson() => _$CartsResponseToJson(this);
+  Map<String, dynamic> toJson() => _$CartsDtoToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
@@ -56,7 +56,7 @@ class ProductDto {
   final int quantity;
   final double total;
   final double discountPercentage;
-  final double discountedTotal;
+  final double? discountedTotal;
   final String thumbnail;
 
   const ProductDto({
@@ -66,7 +66,7 @@ class ProductDto {
     required this.quantity,
     required this.total,
     required this.discountPercentage,
-    required this.discountedTotal,
+    this.discountedTotal,
     required this.thumbnail,
   });
 

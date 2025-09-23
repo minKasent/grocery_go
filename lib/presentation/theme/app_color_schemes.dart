@@ -11,4 +11,5 @@ class AppColorSchemes {
   static final Color darkGrey = Color(0xFFF2F3F2);
   static final Color lightGrey = Color(0xFFE2E2E2);
   static final Color borderGrey = Color(0xFFF0F0F0);
+  static final Color darkBlue = Color(0xFF489E67);
 }

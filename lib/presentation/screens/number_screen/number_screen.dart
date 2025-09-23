@@ -15,7 +15,7 @@ class NumberScreen extends StatelessWidget {
         backgroundColor: AppColorSchemes.lightWhite,
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios),
-            onPressed: () => Navigator.of(context).pop(),
+          onPressed: () => Navigator.of(context).pop(),
         ),
         toolbarHeight: 100,
         flexibleSpace: Container(

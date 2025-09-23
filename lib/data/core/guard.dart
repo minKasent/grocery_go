@@ -9,6 +9,7 @@ import 'package:grocery_go/domain/core/result.dart';
 /// This guard is used to handle the exceptions and return the failure or T -> Result of task
 /// task is the function that is called to get the data
 /// stackTrace is the stack trace of the exception
+/// [T] generic type of the task
 ResultFuture<T> guardDio<T>(Future<T> Function() task) async {
   try {
     final data = await task();
