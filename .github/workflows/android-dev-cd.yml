@@ -48,11 +48,12 @@ jobs:
 
       # Tạo file service account từ GitHub Secrets
       - name: Create Firebase credentials file
-        run: echo "${{ secrets.FIREBASE_SERVICE_ACCOUNT_JSON }}" > $HOME/firebase.json
+        run: |
+          echo "${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}" > $RUNNER_TEMP/fad.json
+          echo "GOOGLE_APPLICATION_CREDENTIALS=$RUNNER_TEMP/fad.json" >> $GITHUB_ENV
 
       - name: Deploy APK to Firebase (Dev)
         working-directory: android
         run: bundle exec fastlane distribute_android_dev_app_via_firebase
         env:
           FIREBASE_ANDROID_APP_ID: ${{ secrets.FIREBASE_ANDROID_APP_ID_DEV }}
-          GOOGLE_APPLICATION_CREDENTIALS: $HOME/firebase.json
