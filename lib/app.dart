@@ -14,6 +14,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(create: (context) => LocaleBloc(), child: MyAppView());
   }
+
+  // test
 }
 
 class MyAppView extends StatelessWidget {
