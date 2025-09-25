@@ -56,4 +56,4 @@ jobs:
         working-directory: ./android
         run: bundle exec fastlane distribute_android_dev_app_via_firebase
         env:
-          FIREBASE_ANDROID_APP_ID: ${{ secrets.FIREBASE_ANDROID_APP_ID_DEV }}
+          FIREBASE_ANDROID_APP_ID: ${{ secrets.FIREBASE_ANDROID_APP_ID }}
