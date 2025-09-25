@@ -49,7 +49,7 @@ jobs:
       # Tạo file service account từ GitHub Secrets
       - name: Create Firebase credentials file
         run: |
-          echo "${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}" > $RUNNER_TEMP/fad.json
+          echo '${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}' > $RUNNER_TEMP/fad.json
           echo "GOOGLE_APPLICATION_CREDENTIALS=$RUNNER_TEMP/fad.json" >> $GITHUB_ENV
 
       - name: Deploy APK to Firebase (Dev)
