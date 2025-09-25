@@ -42,6 +42,8 @@ import 'package:grocery_go/domain/usecase/get_list_products_category_usecase.dar
     as _i695;
 import 'package:grocery_go/domain/usecase/get_products_category_usecase.dart'
     as _i376;
+import 'package:grocery_go/domain/usecase/get_single_product_usecase.dart'
+    as _i547;
 import 'package:grocery_go/domain/usecase/get_user_info_usecase.dart' as _i149;
 import 'package:grocery_go/domain/usecase/login_usecase.dart' as _i878;
 import 'package:grocery_go/domain/usecase/update_a_cart_usecase.dart' as _i460;
@@ -122,27 +124,30 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i384.ICartRepository>(
       () => _i981.CartRepositoryImpl(gh<_i750.ApiService>()),
     );
-    gh.factory<_i720.DeleteAProductUsecase>(
-      () => _i720.DeleteAProductUsecase(gh<_i676.IProductRepository>()),
-    );
     gh.factory<_i648.GetAllProductsUsecase>(
       () => _i648.GetAllProductsUsecase(gh<_i676.IProductRepository>()),
-    );
-    gh.factory<_i376.GetProductsCategoryUsecase>(
-      () => _i376.GetProductsCategoryUsecase(gh<_i676.IProductRepository>()),
     );
     gh.factory<_i695.GetListProductsCategoryUsecase>(
       () =>
           _i695.GetListProductsCategoryUsecase(gh<_i676.IProductRepository>()),
     );
+    gh.factory<_i376.GetProductsCategoryUsecase>(
+      () => _i376.GetProductsCategoryUsecase(gh<_i676.IProductRepository>()),
+    );
+    gh.factory<_i720.DeleteAProductUsecase>(
+      () => _i720.DeleteAProductUsecase(gh<_i676.IProductRepository>()),
+    );
+    gh.factory<_i547.GetSingleProductUsecase>(
+      () => _i547.GetSingleProductUsecase(gh<_i676.IProductRepository>()),
+    );
     gh.factory<_i515.GetCartUserCase>(
       () => _i515.GetCartUserCase(gh<_i384.ICartRepository>()),
     );
-    gh.factory<_i692.GetFavoriteProductsUsecase>(
-      () => _i692.GetFavoriteProductsUsecase(gh<_i384.ICartRepository>()),
-    );
     gh.factory<_i460.UpdateACartUsecase>(
       () => _i460.UpdateACartUsecase(gh<_i384.ICartRepository>()),
+    );
+    gh.factory<_i692.GetFavoriteProductsUsecase>(
+      () => _i692.GetFavoriteProductsUsecase(gh<_i384.ICartRepository>()),
     );
     gh.lazySingleton<_i67.IAuthRepository>(
       () => _i697.AuthRepositoryImpl(gh<_i750.ApiService>()),

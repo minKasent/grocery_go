@@ -1,5 +1,4 @@
 import 'package:go_router/go_router.dart';
-import 'package:grocery_go/domain/entities/product_entity.dart';
 import 'package:grocery_go/presentation/routes/route_name.dart';
 import 'package:grocery_go/presentation/screens/account/account_screen.dart';
 import 'package:grocery_go/presentation/screens/category_product/category_product_screen.dart';
@@ -53,8 +52,15 @@ class AppRouter {
       GoRoute(
         path: RouteName.productDetail,
         name: RouteName.productDetail,
-        builder: (context, state) =>
-            ProductDetailScreen(productEntity: state.extra as ProductEntity),
+        builder: (context, state) {
+          final extra = state.extra as Map<String, dynamic>;
+          final isFromDeepLink = extra['isFromDeepLink'] as bool? ?? false;
+          final productId = extra['productId'] as int? ?? 0;
+          return ProductDetailScreen(
+            productId: productId,
+            isFromDeepLink: isFromDeepLink,
+          );
+        },
       ),
       GoRoute(
         path: RouteName.categoryProduct,

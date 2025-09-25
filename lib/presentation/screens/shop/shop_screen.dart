@@ -107,7 +107,7 @@ class _ShopView extends StatelessWidget {
                                 onTap: () {
                                   context.pushNamed(
                                     RouteName.productDetail,
-                                    extra: product,
+                                    extra: {'productId': product.id},
                                   );
                                 },
                                 child: Container(

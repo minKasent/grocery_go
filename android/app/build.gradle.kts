@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     id("kotlin-android")
@@ -7,8 +9,15 @@ plugins {
     id("com.google.gms.google-services") version "4.4.3" apply false
 }
 
+// Load keystore properties
+val keystoreProperties = Properties()
+val keystorePropertiesFile = rootProject.file("key.properties")
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(keystorePropertiesFile.inputStream())
+}
+
 android {
-    namespace = "com.grocery_go"
+    namespace = "com.grocery"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = "27.0.12077973"
 
@@ -23,7 +32,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId = "com.grocery_go"
+        applicationId = "com.grocery"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdk = flutter.minSdkVersion
@@ -32,30 +41,56 @@ android {
         versionName = flutter.versionName
     }
 
-    buildTypes {
-        release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig = signingConfigs.getByName("debug")
+    // Signing configurations
+    signingConfigs {
+        create("release") {
+            keyAlias = keystoreProperties["keyAlias"] as String? ?: ""
+            keyPassword = keystoreProperties["keyPassword"] as String? ?: ""
+            storeFile = keystoreProperties["storeFile"]?.let { rootProject.file(it) }
+            storePassword = keystoreProperties["storePassword"] as String? ?: ""
+        }
+        
+        getByName("debug") {
+            // Uses default debug keystore
         }
     }
 
-    flavorDimensions += "app"
+    buildTypes {
+        getByName("release") {
+            signingConfig = signingConfigs.getByName("release")
+            isMinifyEnabled = true
+            isShrinkResources = true
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+        }
+
+        getByName("debug") {
+            signingConfig = signingConfigs.getByName("debug")
+            isDebuggable = true
+            applicationIdSuffix = ".debug"
+        }
+    }
+
+    flavorDimensions += "environment"
 
     productFlavors {
         create("dev") {
-            dimension = "app"
-            applicationId = "com.grocery_go.dev"
+            dimension = "environment"
+            applicationId = "com.grocery.dev"
+            versionNameSuffix = "-dev"
             resValue("string", "app_name", "Grocery Go Dev")
         }
         create("staging") {
-            dimension = "app"
-            applicationId = "com.grocery_go.staging"
+            dimension = "environment"
+            applicationId = "com.grocery.staging"
+            versionNameSuffix = "-staging"
             resValue("string", "app_name", "Grocery Go Staging")
         }
         create("prod") {
-            dimension = "app"
-            applicationId = "com.grocery_go"
+            dimension = "environment"
+            applicationId = "com.grocery"
             resValue("string", "app_name", "Grocery Go")
         }
     }

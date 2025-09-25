@@ -1,11 +1,14 @@
+import 'package:chottu_link/chottu_link.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:grocery_go/l10n/app_localizations.dart';
 import 'package:grocery_go/presentation/bloc/locale/locale_bloc.dart';
 import 'package:grocery_go/presentation/bloc/locale/locale_state.dart';
 import 'package:grocery_go/presentation/routes/app_router.dart';
+import 'package:grocery_go/presentation/routes/route_name.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -18,8 +21,43 @@ class MyApp extends StatelessWidget {
   // test
 }
 
-class MyAppView extends StatelessWidget {
+class MyAppView extends StatefulWidget {
   const MyAppView({super.key});
+
+  @override
+  State<MyAppView> createState() => _MyAppViewState();
+}
+
+class _MyAppViewState extends State<MyAppView> {
+  @override
+  void initState() {
+    super.initState();
+
+    /// 🔗 Listen for incoming dynamic links
+    ChottuLink.onLinkReceived.listen((String link) {
+      debugPrint(" ✅ Link Received: $link");
+      //  "https://onlinegroceries.chottu.link/product/${widget.productId}",
+
+      if (!mounted) {
+        return;
+      }
+
+      try {
+        if (link.contains('/product/')) {
+          final productId = link.split("/product/")[1];
+          final productIdInt = int.parse(productId);
+          context.go(
+            RouteName.productDetail,
+            extra: {'productId': productIdInt, 'isFromDeepLink': true},
+          );
+        }
+      } catch (e) {
+        debugPrint("❌ Error parsing link: $e");
+      }
+
+      /// Tip: ➡️ Navigate to a specific page or take action based on the link
+    });
+  }
 
   @override
   Widget build(BuildContext context) {

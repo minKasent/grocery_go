@@ -11,6 +11,7 @@ extension ProductResponseMapper on ProductResponseDto {
       final category = dto.category ?? 'Other';
 
       final productEntity = ProductEntity(
+        id: dto.id ?? 0,
         title: dto.title ?? '',
         price: dto.price ?? 0.0,
         thumbnail: dto.thumbnail ?? '',
@@ -54,6 +55,7 @@ extension ProductMapper on ProductResponseDto {
   ListOfProductsEntity toListOfProductsEntity() {
     final productsList = products?.map((dto) {
       return ProductEntity(
+        id: dto.id ?? 0,
         title: dto.title ?? '',
         price: dto.price ?? 0.0,
         thumbnail: dto.thumbnail ?? '',
@@ -65,5 +67,20 @@ extension ProductMapper on ProductResponseDto {
     }).toList();
 
     return ListOfProductsEntity(listOfProductsEntity: productsList ?? []);
+  }
+}
+
+extension SingleProductMapper on ProductDto {
+  ProductEntity toEntity() {
+    return ProductEntity(
+      id: id ?? 0,
+      title: title ?? '',
+      price: price ?? 0.0,
+      thumbnail: thumbnail ?? '',
+      weight: weight ?? 0,
+      images: images ?? [],
+      description: description ?? '',
+      rating: rating ?? 0.0,
+    );
   }
 }

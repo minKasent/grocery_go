@@ -25,7 +25,7 @@ class CartsDto {
 @JsonSerializable(explicitToJson: true)
 class CartDto {
   final int id;
-  final List<ProductDto> products;
+  final List<CartProductDto> products;
   final double total;
   final double discountedTotal;
   final int userId;
@@ -49,7 +49,7 @@ class CartDto {
 }
 
 @JsonSerializable()
-class ProductDto {
+class CartProductDto {
   final int id;
   final String title;
   final double price;
@@ -59,7 +59,7 @@ class ProductDto {
   final double? discountedTotal;
   final String thumbnail;
 
-  const ProductDto({
+  const CartProductDto({
     required this.id,
     required this.title,
     required this.price,
@@ -70,8 +70,8 @@ class ProductDto {
     required this.thumbnail,
   });
 
-  factory ProductDto.fromJson(Map<String, dynamic> json) =>
-      _$ProductDtoFromJson(json);
+  factory CartProductDto.fromJson(Map<String, dynamic> json) =>
+      _$CartProductDtoFromJson(json);
 
-  Map<String, dynamic> toJson() => _$ProductDtoToJson(this);
+  Map<String, dynamic> toJson() => _$CartProductDtoToJson(this);
 }

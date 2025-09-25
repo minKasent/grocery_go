@@ -26,7 +26,7 @@ part 'favorite_products_dto.g.dart';
 @JsonSerializable()
 class FavoriteProductsDto {
   final int id;
-  final List<ProductDto> products;
+  final List<FavoriteProductDto> products;
   final double total;
   final double discountedTotal;
   final int userId;
@@ -50,7 +50,7 @@ class FavoriteProductsDto {
 }
 
 @JsonSerializable()
-class ProductDto {
+class FavoriteProductDto {
   final int id;
   final String title;
   final double price;
@@ -60,7 +60,7 @@ class ProductDto {
   final double discountedTotal;
   final String thumbnail;
 
-  ProductDto({
+  FavoriteProductDto({
     required this.id,
     required this.title,
     required this.price,
@@ -71,8 +71,8 @@ class ProductDto {
     required this.thumbnail,
   });
 
-  factory ProductDto.fromJson(Map<String, dynamic> json) =>
-      _$ProductDtoFromJson(json);
+  factory FavoriteProductDto.fromJson(Map<String, dynamic> json) =>
+      _$FavoriteProductDtoFromJson(json);
 
-  Map<String, dynamic> toJson() => _$ProductDtoToJson(this);
+  Map<String, dynamic> toJson() => _$FavoriteProductDtoToJson(this);
 }

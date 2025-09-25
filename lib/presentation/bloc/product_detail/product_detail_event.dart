@@ -13,3 +13,11 @@ class OnChangeImageIndexEvent extends ProductDetailEvent {
 
   OnChangeImageIndexEvent(this.currentIndex);
 }
+
+class OnGetSingleProductEvent extends ProductDetailEvent {
+  final int id;
+
+  OnGetSingleProductEvent(this.id);
+}
+
+class OnClearProductDetailErrorMessageEvent extends ProductDetailEvent {}

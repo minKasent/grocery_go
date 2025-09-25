@@ -10,7 +10,7 @@ FavoriteProductsDto _$FavoriteProductsDtoFromJson(Map<String, dynamic> json) =>
     FavoriteProductsDto(
       id: (json['id'] as num).toInt(),
       products: (json['products'] as List<dynamic>)
-          .map((e) => ProductDto.fromJson(e as Map<String, dynamic>))
+          .map((e) => FavoriteProductDto.fromJson(e as Map<String, dynamic>))
           .toList(),
       total: (json['total'] as num).toDouble(),
       discountedTotal: (json['discountedTotal'] as num).toDouble(),
@@ -31,18 +31,19 @@ Map<String, dynamic> _$FavoriteProductsDtoToJson(
   'totalQuantity': instance.totalQuantity,
 };
 
-ProductDto _$ProductDtoFromJson(Map<String, dynamic> json) => ProductDto(
-  id: (json['id'] as num).toInt(),
-  title: json['title'] as String,
-  price: (json['price'] as num).toDouble(),
-  quantity: (json['quantity'] as num).toInt(),
-  total: (json['total'] as num).toDouble(),
-  discountPercentage: (json['discountPercentage'] as num).toDouble(),
-  discountedTotal: (json['discountedTotal'] as num).toDouble(),
-  thumbnail: json['thumbnail'] as String,
-);
+FavoriteProductDto _$FavoriteProductDtoFromJson(Map<String, dynamic> json) =>
+    FavoriteProductDto(
+      id: (json['id'] as num).toInt(),
+      title: json['title'] as String,
+      price: (json['price'] as num).toDouble(),
+      quantity: (json['quantity'] as num).toInt(),
+      total: (json['total'] as num).toDouble(),
+      discountPercentage: (json['discountPercentage'] as num).toDouble(),
+      discountedTotal: (json['discountedTotal'] as num).toDouble(),
+      thumbnail: json['thumbnail'] as String,
+    );
 
-Map<String, dynamic> _$ProductDtoToJson(ProductDto instance) =>
+Map<String, dynamic> _$FavoriteProductDtoToJson(FavoriteProductDto instance) =>
     <String, dynamic>{
       'id': instance.id,
       'title': instance.title,
