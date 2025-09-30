@@ -23,7 +23,7 @@ Future<void> main() async {
 
       // Add timeout wrapper to prevent indefinite waiting
       await ChottuLink.init(
-        apiKey: "c_api_FJpMEvPLuTfCeWdxQWOrVNaXhx2uIZn4",
+        apiKey: "c_app_s66gzgFLQf3sVqjYXHJZDzhxymaghMPd",
       ).timeout(
         const Duration(seconds: 10),
         onTimeout: () {

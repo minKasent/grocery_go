@@ -32,31 +32,53 @@ class _MyAppViewState extends State<MyAppView> {
   @override
   void initState() {
     super.initState();
+    _initializeDeepLinkHandling();
+  }
 
+  void _initializeDeepLinkHandling() {
     /// 🔗 Listen for incoming dynamic links
+    /// This handles both cold start and warm start deep links
     ChottuLink.onLinkReceived.listen((String link) {
       debugPrint(" ✅ Link Received: $link");
-      //  "https://onlinegroceries.chottu.link/product/${widget.productId}",
 
+      /// Add a small delay to ensure the app is fully initialized
+      Future.delayed(const Duration(milliseconds: 500), () {
+        _handleDeepLink(link);
+      });
+    });
+  }
+
+  void _handleDeepLink(String link) {
+    try {
+      /// Check if the widget is still mounted
       if (!mounted) {
+        debugPrint(" ❌ Widget not mounted, skipping deep link: $link");
         return;
       }
 
-      try {
-        if (link.contains('/product/')) {
-          final productId = link.split("/product/")[1];
-          final productIdInt = int.parse(productId);
-          context.go(
+      /// Tip: ➡️ Navigate to a specific page or take action based on the link
+      /// Example: "https://onlinegrocerystore.chottu.link/product/2",
+      if (link.contains("/product/")) {
+        final productId = link.split("/product/")[1];
+        final productIdInt = int.tryParse(productId);
+
+        if (productIdInt != null) {
+          /// Use GoRouter.router.go() instead of context.pushNamed()
+          /// This works because we have access to the router instance directly
+          AppRouter.router.goNamed(
             RouteName.productDetail,
             extra: {'productId': productIdInt, 'isFromDeepLink': true},
           );
+          debugPrint(" ✅ Navigated to product detail with ID: $productIdInt");
+        } else {
+          debugPrint(" ❌ Invalid product ID: $productId");
         }
-      } catch (e) {
-        debugPrint("❌ Error parsing link: $e");
+      } else {
+        debugPrint(" ❌ Unsupported deep link format: $link");
       }
-
-      /// Tip: ➡️ Navigate to a specific page or take action based on the link
-    });
+    } catch (e) {
+      debugPrint(" ❌ Error handling deep link: $e");
+    }
   }
 
   @override
