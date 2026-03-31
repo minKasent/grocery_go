@@ -1,0 +1,14 @@
+name: CI Dev iOS (disabled)
+
+# Repo này hiện chỉ làm CI Android.
+# Workflow iOS được giữ lại nhưng chỉ chạy khi bấm thủ công để tránh lỗi parse:
+# "No event triggers defined in 'on'".
+on:
+  workflow_dispatch:
+
+jobs:
+  noop:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Skip iOS CI
+        run: echo "iOS CI is disabled. Only Android CI is enabled."
