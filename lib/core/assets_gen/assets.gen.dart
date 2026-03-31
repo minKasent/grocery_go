@@ -88,6 +88,7 @@ class $AssetsIconsGen {
       const AssetGenImage('assets/icons/increase_ic.png');
 
   /// File path: assets/icons/logout_ic.png
+  /// File path: assets/icons/logout_ic.png
   AssetGenImage get logoutIc =>
       const AssetGenImage('assets/icons/logout_ic.png');
 
