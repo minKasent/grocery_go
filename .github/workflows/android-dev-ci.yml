@@ -15,6 +15,10 @@ jobs:
   build-android:
     name: Build Android Dev
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        build_type: [apk, appbundle]
+      fail-fast: false
 
     steps:
       - name: Checkout repository
@@ -36,12 +40,25 @@ jobs:
       #   run: flutter test
 
       - name: Build APK (dev flavor)
+        if: matrix.build_type == 'apk'
         run: flutter build apk --release --flavor dev -t lib/main_dev.dart
 
+      - name: Build App Bundle (dev flavor)
+        if: matrix.build_type == 'appbundle'
+        run: flutter build appbundle --release --flavor dev -t lib/main_dev.dart
+
       - name: Upload APK artifact
-        if: always()
+        if: always() && matrix.build_type == 'apk'
         uses: actions/upload-artifact@v4
         with:
           name: android-dev-apk
           path: build/app/outputs/flutter-apk/app-dev-release.apk
+          if-no-files-found: warn
+
+      - name: Upload App Bundle artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: android-dev-appbundle
+          path: build/app/outputs/bundle/devRelease/app-dev-release.aab
           if-no-files-found: warn
