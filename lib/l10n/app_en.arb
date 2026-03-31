@@ -1,7 +1,16 @@
 {
   "@@locale": "en",
-  "onlineGrocery": "online grocery",
+  "onlineGrocery": "Online Grocery",
   "welcomeToOurStore": "Welcome to our store",
   "getStarted": "Get Started",
-  "getStartedDescription": "Ger your groceries in as fast as one hour"
+  "getStartedDescription": "Get your groceries in as fast as one hour",
+  "orders": "Orders",
+  "myDetails": "My Details",
+  "deliveryAddress": "Delivery Address",
+  "paymentMethods": "Payment Methods",
+  "promoCode": "Promo Code",
+  "notifications": "Notifications",
+  "help": "Help",
+  "about": "About",
+  "language": "Language"
 }

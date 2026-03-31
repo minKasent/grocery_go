@@ -1,9 +1,11 @@
 import 'package:grocery_go/data/core/guard.dart';
 import 'package:grocery_go/data/datasources/remote/api_service.dart';
 import 'package:grocery_go/data/mappers/login_mapper.dart';
+import 'package:grocery_go/data/mappers/user_info_mapper.dart';
 import 'package:grocery_go/data/models/requests/login_schema.dart';
 import 'package:grocery_go/domain/core/result.dart';
 import 'package:grocery_go/domain/entities/login_entity.dart';
+import 'package:grocery_go/domain/entities/user_info_entity.dart';
 import 'package:grocery_go/domain/repository/auth_repository.dart';
 import 'package:injectable/injectable.dart';
 
@@ -17,6 +19,14 @@ class AuthRepositoryImpl implements IAuthRepository {
   ResultFuture<LoginEntity> login(LoginSchema loginSchema) {
     return guardDio<LoginEntity>(() async {
       final dto = await apiService.login(loginSchema);
+      return dto.toEntity();
+    });
+  }
+
+  @override
+  ResultFuture<UserInfoEntity> getUserInfo() {
+    return guardDio<UserInfoEntity>(() async {
+      final dto = await apiService.getUserInfo();
       return dto.toEntity();
     });
   }

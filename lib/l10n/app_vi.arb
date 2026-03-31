@@ -1,7 +1,16 @@
 {
   "@@locale": "vi",
-  "onlineGrocery": "Mua sắm trực tuyến",
-  "welcomeToOurStore": "Chào mừng đến với cửa hàng",
+  "onlineGrocery": "Cửa hàng thực phẩm trực tuyến",
+  "welcomeToOurStore": "Chào mừng đến với cửa hàng của chúng tôi",
   "getStarted": "Bắt đầu",
-  "getStartedDescription": "Nhận hàng tạp hóa nhanh nhất chỉ trong một giờ"
+  "getStartedDescription": "Nhận thực phẩm của bạn chỉ trong vòng một giờ",
+  "orders": "Đơn hàng",
+  "myDetails": "Thông tin của tôi",
+  "deliveryAddress": "Địa chỉ giao hàng",
+  "paymentMethods": "Phương thức thanh toán",
+  "promoCode": "Mã khuyến mãi",
+  "notifications": "Thông báo",
+  "help": "Trợ giúp",
+  "about": "Giới thiệu",
+  "language": "Ngôn ngữ"
 }

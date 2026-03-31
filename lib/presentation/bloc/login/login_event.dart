@@ -7,4 +7,6 @@ class OnLoginEvent extends LoginEvent {
   OnLoginEvent({required this.username, required this.password});
 }
 
-class OnClearErrorMessage extends LoginEvent {}
+class OnClearLoginErrorMessageEvent extends LoginEvent {}
+
+class OnTogglePasswordEvent extends LoginEvent {}

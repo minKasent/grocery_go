@@ -6,12 +6,14 @@ class LoginState extends Equatable {
   final String apiErrorMessage;
   final LoginEntity? loginEntity;
   final bool isSuccess;
+  final bool isHidePass;
 
   const LoginState({
     this.isLoading = false,
     this.apiErrorMessage = '',
     this.loginEntity,
     this.isSuccess = false,
+    this.isHidePass = true,
   });
 
   copyWith({
@@ -19,12 +21,14 @@ class LoginState extends Equatable {
     String? apiErrorMessage,
     LoginEntity? loginEntity,
     bool? isSuccess,
+    bool? isHidePass,
   }) {
     return LoginState(
       isLoading: isLoading ?? this.isLoading,
       apiErrorMessage: apiErrorMessage ?? this.apiErrorMessage,
       loginEntity: loginEntity ?? this.loginEntity,
       isSuccess: isSuccess ?? this.isSuccess,
+      isHidePass: isHidePass ?? this.isHidePass,
     );
   }
 
@@ -34,5 +38,6 @@ class LoginState extends Equatable {
     apiErrorMessage,
     loginEntity,
     isSuccess,
+    isHidePass,
   ];
 }

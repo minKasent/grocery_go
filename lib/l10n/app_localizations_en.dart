@@ -9,7 +9,7 @@ class AppLocalizationsEn extends AppLocalizations {
   AppLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
-  String get onlineGrocery => 'online grocery';
+  String get onlineGrocery => 'Online Grocery';
 
   @override
   String get welcomeToOurStore => 'Welcome to our store';
@@ -19,5 +19,32 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get getStartedDescription =>
-      'Ger your groceries in as fast as one hour';
+      'Get your groceries in as fast as one hour';
+
+  @override
+  String get orders => 'Orders';
+
+  @override
+  String get myDetails => 'My Details';
+
+  @override
+  String get deliveryAddress => 'Delivery Address';
+
+  @override
+  String get paymentMethods => 'Payment Methods';
+
+  @override
+  String get promoCode => 'Promo Code';
+
+  @override
+  String get notifications => 'Notifications';
+
+  @override
+  String get help => 'Help';
+
+  @override
+  String get about => 'About';
+
+  @override
+  String get language => 'Language';
 }
